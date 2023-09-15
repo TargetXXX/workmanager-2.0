@@ -41,7 +41,12 @@ Se preferir, você pode usar Docker para iniciar o Workmanager com facilidade. S
    ```
    docker-compose up -d
    ```
+4. Execute o seguinte comando na raiz do backend dentro do container Docker recém criado:
 
+   ```
+   php artisan migrate
+   ```
+   
    Isso iniciará os containers do Laravel, React TypeScript e um container de banco de dados MySQL.
 
 4. O Workmanager estará acessível através das portas configuradas no Docker Compose (por padrão, 8000 para Laravel e 3000 para React TypeScript).
