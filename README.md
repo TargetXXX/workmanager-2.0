@@ -16,8 +16,9 @@ Para iniciar o Workmanager localmente sem Docker, siga estas etapas:
 
 1. Clone este projeto em seu ambiente de desenvolvimento.
 2. Dentro da pasta do Laravel, encontre o arquivo ".env" e configure o banco de dados desejado.
-3. No terminal, navegue até o diretório do Laravel e execute o comando `php artisan migrate` para criar as tabelas necessárias no banco de dados.
-4. Inicie o servidor REST com o comando `php artisan serve`.
+3. No terminal, procure o diretório do Laravel e execute `composer install` para instalar as dependências.
+4. No terminal, navegue até o diretório do Laravel e execute o comando `php artisan migrate` para criar as tabelas necessárias no banco de dados.
+5. Inicie o servidor REST com o comando `php artisan serve`.
 
 #### Configuração do Frontend (React TypeScript)
 
