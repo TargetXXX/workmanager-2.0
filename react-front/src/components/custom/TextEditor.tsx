@@ -20,14 +20,24 @@ const TextEditor: React.FC<{
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
       ['link'],
       ['clean'],
+      ['image'],
+      ['size'],
+      ['font'],
+      ['code-block'],
+      ['blockquote'],
     ],
   };
-
+  
   const formats = [
     'header',
     'bold', 'italic', 'underline', 'strike',
     'list', 'bullet',
     'link',
+    'image',
+    'size',
+    'font',
+    'code-block',
+    'blockquote',
   ];
 
   const handleChange = (content: string) => {

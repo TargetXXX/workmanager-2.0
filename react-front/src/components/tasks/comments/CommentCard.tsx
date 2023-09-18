@@ -132,7 +132,7 @@ const CommentCard: React.FC<CommentCardProps> = ({comment, users, removeComment}
                             paddingRight: '50px',
                         }}>
                             <strong>Feito por:</strong> {getStaffName(comment.user_id, users)} |<strong> Data: </strong> {new Date(comment.created_at).toLocaleString()}
-                            {(actualComment.edited && !isEditing) ? 
+                            {(actualComment.edited == true && !isEditing) ? 
                             (<div className='banana'>
                                 <div id="textModal" className="textModal">{new Date(actualComment.updated_at).toLocaleString()}</div>
                                 <strong

@@ -13,6 +13,7 @@ class Comment extends Model
         'content',
         'user_id',
         'task_id',
+        'edited',
 
     ];
 
