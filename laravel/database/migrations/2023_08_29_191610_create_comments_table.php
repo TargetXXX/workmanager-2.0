@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('task_id');
             $table->unsignedBigInteger('user_id');
             $table->text('content');
-            $table->text('edited')->default('false');
+            $table->text('edited');
             $table->timestamps();
         });
     }

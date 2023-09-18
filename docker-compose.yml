@@ -23,6 +23,7 @@ services:
   database:
     image: mysql:5.7
     environment:
+      MYSQL_USER: root
       MYSQL_ALLOW_EMPTY_PASSWORD: true
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_DATABASE: workmanager
