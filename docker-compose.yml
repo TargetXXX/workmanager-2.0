@@ -10,7 +10,6 @@ services:
       - ./laravel:/var/www/html
     depends_on:
       - database
-
   react:
     build:
       context: ./react-front
@@ -19,15 +18,11 @@ services:
       - "3000:3000"
     volumes:
       - ./react-front:/app
-
   database:
     image: mysql:5.7
     environment:
-      MYSQL_USER: root
-      MYSQL_ALLOW_EMPTY_PASSWORD: true
-      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD:  "true"
       MYSQL_DATABASE: workmanager
-      MYSQL_PASSWORD: ""
     ports:
       - "3306:3306"
     volumes:
