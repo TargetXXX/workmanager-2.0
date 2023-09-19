@@ -19,10 +19,14 @@ Se preferir, você pode usar Docker para iniciar o Workmanager com facilidade. S
    ```
    docker-compose up -d
    ```
-3. Execute o seguinte comando na raiz do backend dentro do container Docker recém criado:
+3. Execute os seguintes comando na raiz do backend dentro do container Docker recém criado:
    ```
-   php artisan migrate
+   php artisan migrate:fresh
    ```
+   ```
+   php artisan db:seed
+   ```
+   
 4. 
    Caso o erro "You must enable the openssl extension in your php.ini" ocorra, utilize o comando:
    ```
@@ -42,7 +46,8 @@ Para iniciar o Workmanager localmente sem Docker, siga estas etapas:
 2. Dentro da pasta do Laravel, encontre o arquivo ".env" e configure o banco de dados desejado.
 3. No terminal, procure o diretório do Laravel e execute `composer install` para instalar as dependências.
 4. No terminal, navegue até o diretório do Laravel e execute o comando `php artisan migrate` para criar as tabelas necessárias no banco de dados.
-5. Inicie o servidor REST com o comando `php artisan serve`.
+5. No terminal, também no diretório do Laravel execute o comando `php artisan db:seed` para criar o usuário padrão no banco.
+6. Inicie o servidor REST com o comando `php artisan serve`.
 
 #### Configuração do Frontend (React TypeScript)
 
@@ -51,17 +56,11 @@ Para iniciar o Workmanager localmente sem Docker, siga estas etapas:
 
 ### Acesso ao Site
 
-Após seguir essas etapas, você pode acessar o Workmanager através do seu navegador. Para criar um usuário com permissões de administrador, você pode usar uma ferramenta como o Insomnia para adicionar manualmente um usuário através da rota "http://localhost:PORTA/api/register" com os seguintes parâmetros padrões:
+Após seguir essas etapas, você pode acessar o Workmanager através do seu navegador. Ao acessar o site de acordo com as portas aplicadas, logue usando o usuário ADMIN padrão:
 
-```json
-{
-    "username": "teste",
-    "email": "teste@teste.com",
-    "password": "a123@",
-    "name": "Teste Tester",
-    "group": "10",
-    "password_confirmation": "a123@"
-}
+```
+username: teste
+senha: 123
 ```
 
 ## Backend em Laravel
