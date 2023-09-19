@@ -28,7 +28,7 @@ const Register: React.FC = () => {
           navigate('/');
         }
       })
-      .catch((rp) => {
+      .catch(() => {
         Swal.close();
         Swal.fire({
           icon: 'error',
