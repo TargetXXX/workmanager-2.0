@@ -11,18 +11,24 @@ const Register: React.FC = () => {
   const [password_confirmation, setPasswordConfirmation] = useState('');
   const [name, setName] = useState('');
   let navigate = useNavigate();
-
+  const group = '1';
   const handleRegister = async () => {
       Swal.showLoading();
-      api.post('/register', { username, email, password, password_confirmation, name, group: '1'})
+      api.post('/register', { username, email, password, password_confirmation, name, group})
       .then(() => {
         Swal.fire({
           icon: 'success',
           title: 'Success!',
           text: 'Cadastro feito com sucesso.',
         });
+        let token = sessionStorage.getItem('token');
+        if(!!token) {
+          navigate('/users');
+        } else {
+          navigate('/');
+        }
       })
-      .catch(() => {
+      .catch((rp) => {
         Swal.close();
         Swal.fire({
           icon: 'error',
@@ -30,15 +36,6 @@ const Register: React.FC = () => {
           text: 'Erro ao cadastrar usuário.',
         });
       })
-      .finally(() => {
-        let token = sessionStorage.getItem('token');
-        Swal.close();
-        if(!!token) {
-          navigate('/users');
-        } else {
-          navigate('/');
-        }
-      });
   };
 
   return (

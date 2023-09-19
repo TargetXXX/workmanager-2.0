@@ -12,7 +12,7 @@ class RegisterRequest extends FormRequest
         return [
             'username' => 'required|string|min:4|max:16|regex:/^[a-zA-Z0-9.]+$/|not_regex:/\s/',
             'email' => 'required|email|min:4|max:200',
-            'password' => ['required', 'confirmed', Password::min(3)->letters()->numbers()->symbols()],
+            'password' => ['required', 'confirmed', Password::min(3)],
             'name' => 'required|string|min:4|max:100|regex:/^[a-zA-Z\s]+$/|not_regex:/^\s*$/',
             'group' => 'required|string',
         ];
