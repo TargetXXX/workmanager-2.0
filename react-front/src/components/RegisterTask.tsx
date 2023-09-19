@@ -59,15 +59,15 @@ const TaskRegister: React.FC = () => {
         Swal.hideLoading();
         Swal.fire({
           icon: 'success',
-          title: 'Success!',
+          title: 'Sucesso!',
           text: 'Tarefa registrada com sucesso.',
         });
         history('/tasks');
       }).catch(() => {
         Swal.hideLoading();
         Swal.fire({
-          icon: 'success',
-          title: 'Success!',
+          icon: 'error',
+          title: 'Erro!',
           text: 'Erro ao registrar tarefa.',
         });
       });

@@ -61,7 +61,7 @@ const TaskCard: React.FC<taskProps> = ({
         Modal.close();
         Modal.fire({
           icon: "error",
-          title: "Error",
+          title: "Erro",
           text: "Erro ao deletar tarefa.",
         });
       }

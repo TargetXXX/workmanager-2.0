@@ -8,6 +8,7 @@ import { User } from '../utils/GetUser';
 const UserFormPage: React.FC = () => {
   const { id } = useParams();
   const history = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState<User>({
     id: 0,
     username: '',
@@ -19,12 +20,17 @@ const UserFormPage: React.FC = () => {
   });
 
   useEffect(() => {
-    const fetchUser = async () => {
-      Swal.showLoading();
+    const fetchUser = () => {
+      setIsLoading(true);
       api(`/get/users/${id}`)
         .then((rp) => {
-          Swal.close();
           setUser(rp.data);
+        })
+        .catch(() => {
+          console.log("Erro ao buscar dados do usuário.");
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     };
     if (id) fetchUser();
@@ -37,33 +43,38 @@ const UserFormPage: React.FC = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      if (id) {
-        Swal.showLoading();
-        await api.put(`http://127.0.0.1:8000/api/edit/user/${id}`, user);
-        Swal.close();
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Erro ao processar os dados do formulário.',
+    if (id) {
+      setIsLoading(true);
+      api.put(`http://127.0.0.1:8000/api/edit/user/${id}`, user)
+        .then(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Sucesso!',
+            text: 'Usuário salvo com sucesso.',
+          });
+          history('/users');
+        })
+        .catch(() => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro',
+            text: 'Erro ao salvar usuário.',
+          });
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
-      }
-      Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: 'Usuário salvo com sucesso.',
-      });
-      history('/users');
-    } catch (error) {
+    } else {
       Swal.fire({
         icon: 'error',
-        title: 'Error',
-        text: 'Erro ao salvar usuário.',
+        title: 'Erro',
+        text: 'Erro ao processar os dados do formulário.',
       });
     }
+
+
   };
 
   return (
@@ -125,7 +136,9 @@ const UserFormPage: React.FC = () => {
           Salvar
         </button>
       </form>
+      {isLoading ? (<div className="overlay"><div className="loading"><div className="loading-spinner"></div></div></div>) : null}
     </div>
+    
   );
 };
 

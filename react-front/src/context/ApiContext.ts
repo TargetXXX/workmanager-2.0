@@ -12,13 +12,13 @@ export const update = async (id: number, user: User) => {
     if(data.success) {
         Swal.fire({
             icon: 'success',
-            title: 'Success!',
+            title: 'Sucesso!',
             text: 'Usuário salvo com sucesso.',
         }); 
     } else {
         Swal.fire({
             icon: 'error',
-            title: 'Error',
+            title: 'Erro',
             text: 'Erro ao salvar usuário.',
         });
     }

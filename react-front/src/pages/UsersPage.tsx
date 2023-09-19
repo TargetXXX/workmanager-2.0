@@ -31,25 +31,27 @@ const UsersPage: React.FC = () => {
       (selectedGroup === '' || user.group === selectedGroup)
   );
   useEffect(() => {
-    fetchData();
     getSessionUser().then((user) => setSessionUser(user));
+    fetchData();
   }, []);
 
   useEffect(() => {
     setTotalPages(Math.ceil(filteredUsers.length / itemsPerPage));
   }, [filteredUsers]);
 
-  const fetchData = async () => {
-    try {
-      Swal.showLoading();
-      const response = await api('/get/users');
-      setUsers(response.data);
-    } catch (error) {
-      console.error('Error fetching users:', error);
-    } finally {
-      setIsLoading(false);
-      Swal.close();
-    }
+  const fetchData = () => {
+    setIsLoading(true)
+  
+      api('/get/users')
+      .then((rp) => {
+        setUsers(rp.data);
+      })
+      .catch(() => {
+        console.log("Erro ao buscar usuários.")
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleDelete = async (id: number) => {
@@ -71,23 +73,27 @@ const UsersPage: React.FC = () => {
         });
         return;
       }
+      setIsLoading(true);
 
-      try {
-        Swal.showLoading();
-        await api.delete(`/delete/user/${id}`);
+
+      api.delete(`/delete/user/${id}`)
+      .then(() => {
         Swal.fire({
           icon: 'success',
           title: 'Sucesso!',
           text: 'Usuário deletado com sucesso!',
         });
         fetchData();
-      } catch (error) {
+      }).catch(() => {
         Swal.fire({
           icon: 'error',
           title: 'Erro',
           text: 'Erro ao deletar usuário.',
-        });
-      }
+        })
+      }).finally(() => {
+          setIsLoading(false);
+      });
+    
     }
   };
 
@@ -249,6 +255,8 @@ const UsersPage: React.FC = () => {
 
       {renderPagination()}
 
+      {isLoading ? (<div className="overlay"><div className="loading"><div className="loading-spinner"></div></div></div>) : null}
+      
       {sessionUser && parseInt(sessionUser.group) >= 10 ? (<Link to="/register" className="btn btn-primary">
         <FaPlus />
       </Link>) : null} 

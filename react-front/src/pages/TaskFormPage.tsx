@@ -56,7 +56,7 @@ const TaskFormPage: React.FC = () => {
       Swal.close();
       Swal.fire({
         icon: 'success',
-        title: 'Success!',
+        title: 'Sucesso!',
         text: 'Tarefa salva com sucesso.',
       });
       history('/tasks');

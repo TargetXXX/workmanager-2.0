@@ -18,7 +18,7 @@ const Register: React.FC = () => {
       .then(() => {
         Swal.fire({
           icon: 'success',
-          title: 'Success!',
+          title: 'Sucesso!',
           text: 'Cadastro feito com sucesso.',
         });
         let token = sessionStorage.getItem('token');
@@ -32,7 +32,7 @@ const Register: React.FC = () => {
         Swal.close();
         Swal.fire({
           icon: 'error',
-          title: 'Error',
+          title: 'Erro',
           text: 'Erro ao cadastrar usuário.',
         });
       })
