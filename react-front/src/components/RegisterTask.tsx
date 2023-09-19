@@ -9,8 +9,6 @@ import PrioritySelect from './custom/PrioritySelect';
 import { Task } from './tasks/TaskUtils';
 import TextEditor from './custom/TextEditor';
 
-
-
 const TaskRegister: React.FC = () => {
   const history = useNavigate();
   const [task, setTask] = useState<Task>({

@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api';
 import Swal from 'sweetalert2';
-import { FaPlus, FaTrash, FaEdit, FaFilter, FaSearch } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaEdit, FaFilter } from 'react-icons/fa';
 import { getSessionUser, User } from '../utils/GetUser';
 import './UserPage.css';
 import groups from '../context/GroupsContext';
-
-
 
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);

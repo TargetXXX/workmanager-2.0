@@ -1,8 +1,6 @@
 import { SweetAlert2 } from "sweetalert2-react-content";
 import { User } from "../../utils/GetUser";
 import { FaPlus } from "react-icons/fa";
-import api from "../../api";
-import CommentCard from "./comments/CommentCard";
 
 export interface Task {
   id: number;
