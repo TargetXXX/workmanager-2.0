@@ -3,7 +3,6 @@
     padding: 8px;
     border: 1px solid #ccc;
   }
-  
   .comment-icons { 
     display: none;
     cursor: pointer;
@@ -11,18 +10,15 @@
     top: 0;
     right: 0; 
   }
-  
   .comment-icons > div {
     align-items: center;
     justify-content: center;
     width: 30px;
     height: 30px;
   }
-  
   .comment-item:hover .comment-icons {
     display: flex;
   }
-
   .comment-content-entire {
     font-family: cursive;
     font-style: italic;
@@ -30,7 +26,6 @@
   .success {
     background-color: #4caf50 !important;
   }
-  
   .error {
     background-color: #f44336 !important;
   }
@@ -45,7 +40,6 @@
     border-radius: 5px;
     z-index: 10;
   }
-
   .overlay {
     position: fixed;
     top: 0;
@@ -58,8 +52,6 @@
     align-items: center;
     z-index: 1000;
   }
-  
-
   .loading-spinner {
     display: inline-block;
     border: 4px solid white;
@@ -73,14 +65,12 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  
   .cantinho {
     right: 5px;
     bottom: 0;
     color: blue;
     position: absolute;
   }
-
   @keyframes textEnter {
     0% { transform: translateY(0); opacity: 0; }
     100% { transform: translateY(-25px); opacity: 1;}
@@ -89,15 +79,11 @@
     0% { transform: translateY(-25px); opacity: 1;}
     100% { transform: translateY(0); opacity: 0;}
   }
-  
   .banana .textEnter {
     animation: textEnter 0.5s linear forwards;
-
   }
-
   .banana .textExit {
-    animation: textExit 0.5s linear forwards;
-    
+    animation: textExit 0.5s linear forwards; 
   }
   .textModal{
     opacity: 0;
@@ -114,3 +100,4 @@
     font-family: cursive;
     transition: all 2s;
   }
+  

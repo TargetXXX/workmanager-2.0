@@ -44,13 +44,12 @@ class UserService
 
         $user = users::find($id);
 
-        if($user) $user->update($request);
-
         if (isset($request["password"]) && strlen($request["password"]) < 60) {
             $request["password"] = bcrypt($request["password"]);
         }
         
-
+        if($user) $user->update($request);
+        
         return  response()->json(['user' => $user ? $user->toArray() : null, 'success' => boolval($user)]);
     }
 

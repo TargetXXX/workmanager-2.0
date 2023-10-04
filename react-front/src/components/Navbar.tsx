@@ -86,6 +86,9 @@ const Navbar: React.FC<NavProp> = (props) => {
                 <li className="nav-item">
                   <Link className="nav-link" to="/tasks" style={styleText}>Tarefas</Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/progress" style={styleText}>Progresso</Link>
+                </li>
                 <li className="nav-item" style={styles}>
                   <button className="nav-link p-0" onClick={openModal} style={styles2}><img src={props.loggedUser.image} alt="" style={styleImg} /></button>
                 </li>

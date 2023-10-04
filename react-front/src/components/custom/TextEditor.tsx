@@ -9,26 +9,36 @@ const TextEditor: React.FC<{
   onChange?: (text: string) => void;
   cancellable: boolean;
   saveable: boolean;
-  editable: boolean
-}> = ({ initialText, onSave, onCancel, cancellable, saveable, editable, onChange }) => {
+  editable: boolean;
+  short?: boolean;
+}> = ({ initialText, onSave, onCancel, cancellable, saveable, editable, onChange, short }) => {
   const [text, setText] = useState(initialText);
   
-  const modules = {
+  const modules = short ? {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link'],
+      ['clean'],
+      
+    ],
+  } : {
     toolbar: [
       [{ 'header': '1' }, { 'header': '2' }],
       ['bold', 'italic', 'underline', 'strike'],
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
       ['link'],
       ['clean'],
-      ['image'],
       ['size'],
       ['font'],
-      ['code-block'],
-      ['blockquote'],
     ],
   };
   
-  const formats = [
+  const formats =short ? [
+    'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet',
+    'link',
+  ] : [
     'header',
     'bold', 'italic', 'underline', 'strike',
     'list', 'bullet',
@@ -61,7 +71,7 @@ const TextEditor: React.FC<{
         modules={modules}
         formats={formats}
         readOnly={!editable}
-        
+        id='text-editor'
       />
       <div className="editor-buttons mt-2"> {
         saveable ?  <button className="btn btn-success" onClick={handleSave}>Salvar</button> : null

@@ -82,11 +82,12 @@ const UsersPage: React.FC = () => {
           text: 'Usuário deletado com sucesso!',
         });
         fetchData();
-      }).catch(() => {
+      }).catch((rp) => {
         Swal.fire({
           icon: 'error',
           title: 'Erro',
           text: 'Erro ao deletar usuário.',
+          footer: rp.response.data.message,
         })
       }).finally(() => {
           setIsLoading(false);

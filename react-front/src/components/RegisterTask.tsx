@@ -61,12 +61,13 @@ const TaskRegister: React.FC = () => {
           text: 'Tarefa registrada com sucesso.',
         });
         history('/tasks');
-      }).catch(() => {
+      }).catch((rp) => {
         Swal.hideLoading();
         Swal.fire({
           icon: 'error',
           title: 'Erro!',
           text: 'Erro ao registrar tarefa.',
+          footer: rp.response.data.message,
         });
       });
 

@@ -28,12 +28,13 @@ const Register: React.FC = () => {
           navigate('/');
         }
       })
-      .catch(() => {
+      .catch((rp) => {
         Swal.close();
         Swal.fire({
           icon: 'error',
           title: 'Erro',
           text: 'Erro ao cadastrar usuário.',
+          footer: rp.response.data.message,
         });
       })
   };

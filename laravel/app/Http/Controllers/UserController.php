@@ -5,16 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\TaskRequest;
 use App\Services\Methods;
-use App\Services\TaskCreateService;
-use App\Services\TaskDeleteService;
-use App\Services\TaskEditService;
-use App\Services\TaskGetService;
-use App\Services\TaskService;
-use App\Services\TaskUpdateService;
 use App\Services\UserService;
-use Illuminate\Http\Client\Request;
 
 class UserController extends Controller
 {

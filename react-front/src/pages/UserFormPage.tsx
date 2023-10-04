@@ -56,11 +56,12 @@ const UserFormPage: React.FC = () => {
           });
           history('/users');
         })
-        .catch(() => {
+        .catch((rp) => {
           Swal.fire({
             icon: 'error',
             title: 'Erro',
             text: 'Erro ao salvar usuário.',
+            footer: rp.response.data.message,
           });
         })
         .finally(() => {

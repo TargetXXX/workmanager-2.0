@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import LogOut from './components/LogOut';
 import TaskRegister from './components/RegisterTask';
 import { User } from './utils/GetUser';
+import ProgressPage from './pages/ProgressPage';
 
 const App: React.FC = () => {
   const logged_user: User = {
@@ -34,9 +35,8 @@ const App: React.FC = () => {
         Swal.showLoading();
 
         api.defaults.headers.common['Authorization'] = `Bearer ${sessionStorage.getItem('token')}`;
-
         api('/logged')
-          .then((rp) => {
+          .then((rp: any) => {
             const data = rp.data;
             if (data.auth) setIsAuthenticated(true);
 
@@ -50,8 +50,8 @@ const App: React.FC = () => {
               image: data.user.image,
             })
           })
-          .catch((error) => {
-            console.log("Erro ao buscar dados da sessão", error)
+          .catch(() => {
+            console.log("Erro ao buscar dados da sessão")
           })
           .finally(() => {
             Swal.close();
@@ -80,6 +80,7 @@ const App: React.FC = () => {
               <Route path="/users" element={<UsersPage />} />
               <Route path="/logout" element={<LogOut />} />
               <Route path="/tasks" element={<TasksPage />} />
+              <Route path='/progress' element={<ProgressPage/>}/>
             </>
           ) : (
             <Route element={<Navigate to="/" />} />

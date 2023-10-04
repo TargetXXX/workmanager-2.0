@@ -29,7 +29,7 @@ const TaskFormPage: React.FC = () => {
     const fetchTask = async () => {
         Swal.showLoading();
         api.get(`/get/tasks/${id}`)
-        .then((rp) => {
+        .then((rp: any) => {
           setTask(rp.data);
           
         }).catch(() => {
