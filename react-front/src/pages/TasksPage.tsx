@@ -175,7 +175,7 @@ const TasksPage: React.FC = () => {
         className="form-control"
       />
 
-      {sessionUser && parseInt(sessionUser.group) >= 10 ? (
+      {sessionUser && parseInt(sessionUser.group) >= 5 ? (
         <Link to="/register/task" className="btn btn-primary mt-3 custombtn">
           <FaPlus /> Criar Tarefa
         </Link>

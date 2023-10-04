@@ -126,7 +126,9 @@ const TaskCard: React.FC<taskProps> = ({
             ) : null}
           </div>
         </div>
-        <div className="task-icons">
+        {
+          parseInt(sessionUser?.group ?? '0') >= 5 ? (
+            <div className="task-icons">
           <div
             onClick={(e) => {
               e.stopPropagation();
@@ -144,6 +146,9 @@ const TaskCard: React.FC<taskProps> = ({
             <FaTrash size={16} color="red" />
           </div>
         </div>
+          )
+          : null
+        }
       </Link>
       {isOpen && (
         <TaskModal

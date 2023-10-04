@@ -25,6 +25,10 @@ const GroupSelect: React.FC<GroupSelectProps> = ({ selected, onChange }) => {
         label: 'Usuário',
       },
       {
+        value: '5',
+        label: 'Manager',
+      },
+      {
         value: '10',
         label: 'Admin',
       },

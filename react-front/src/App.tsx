@@ -74,9 +74,9 @@ const App: React.FC = () => {
           <Route path="/register" element={<Register />} />
           {isAuthenticated ? (
             <>
-              <Route path="/register/task" element={parseInt(loggedUser.group) >= 10 ? <TaskRegister /> : <Navigate to={'/'}/>} />
+              <Route path="/register/task" element={parseInt(loggedUser.group) >= 5 ? <TaskRegister /> : <Navigate to={'/'}/>} />
               <Route path="/edit/users/:id" element={parseInt(loggedUser.group) >= 10 ? <UserFormPage /> : <Navigate to={'/'}/>} />
-              <Route path="/edit/tasks/:id" element={<TaskFormPage /> } />
+              <Route path="/edit/tasks/:id" element={parseInt(loggedUser.group) >= 5 ?<TaskFormPage /> : <Navigate to={'/'}/>} />
               <Route path="/users" element={<UsersPage />} />
               <Route path="/logout" element={<LogOut />} />
               <Route path="/tasks" element={<TasksPage />} />
